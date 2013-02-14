@@ -1,0 +1,19 @@
+<section id="main" class="<%= todos.attr("length") > 0 ? "show" : "" %>">
+  <input id="toggle-all" type="checkbox" <%= todos.allComplete() ? "checked" : "" %>>
+  <label for="toggle-all">Mark all as complete</label>
+  <ul id="todo-list">
+    <% list(todos, function( todo ) { %>
+      <li class="todo 
+        <%= todo.attr("complete") ? "done" : "" %> 
+        <%= todo.attr("editing") ? "editing" : "" %>" 
+        <%= (el)-> el.data('todo', todo) %>>
+        <div class="view">
+          <input class="toggle" type="checkbox" <%= todo.attr("complete") ? "checked" : "" %>>
+          <label><%= todo.attr("text") %></label>
+          <a class="destroy"></a>
+        </div>
+        <input class="edit" type="text" value="<%= todo.attr("text") %>">
+      </li>
+    <% }) %>
+  </ul>
+</section>
